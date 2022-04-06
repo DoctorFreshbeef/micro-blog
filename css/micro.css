@@ -1,0 +1,40 @@
+body{
+background-color: #000;
+color: #ffd;
+}
+
+.item{
+display: inline-block;
+border: 1px solid #fff;
+margin: 8px;
+padding: 8px 20px;
+width: 300px;
+cursor: pointer;
+}
+
+.head {
+font-weight: bold;
+font-size: larger;
+}
+
+.head, .date{
+width: 100%;
+text-align: center;
+}
+
+#microList{
+display: block;
+}
+
+#moreDiv{
+width: 100%;
+text-align: center;
+display: block;
+padding: 0 20px;
+}
+
+#goDiv{
+cursor: pointer;
+display: inline;
+}
+
