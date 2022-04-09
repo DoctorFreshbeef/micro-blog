@@ -15,4 +15,13 @@ class db
         }
         return $retArray;
     }
+
+    function get_item($id) {
+        $result = $this->conn->query("SELECT * FROM blog WHERE id = $id");
+        if ($result->num_rows) {
+            return $result->fetch_assoc();
+        } else {
+            return 0;
+        }
+    }
 }
