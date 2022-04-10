@@ -8,7 +8,7 @@ class db
 
     function load_blog($start, $offset) {
         $retArray = array();
-        $results = $this->conn->query("SELECT id, head, blog_date FROM blog ORDER BY id DESC LIMIT $start, $offset");
+        $results = $this->conn->query("SELECT id, head, DATE_FORMAT(blog_date, \"%d-%m-%Y\") AS blog_date FROM blog ORDER BY id DESC LIMIT $start, $offset");
 
         while ($row = $results->fetch_assoc()) {
             $retArray[] = $row;
