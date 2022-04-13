@@ -1,0 +1,24 @@
+body{
+font-family: Verdana;
+}
+
+#content{
+display: block;
+width: 100%;
+text-align: center;
+align-content: center;
+}
+
+#editorForm{
+display: block;
+width: 602px;
+margin: 2px auto;
+text-align: left;
+}
+
+.formLabel{
+font-weight: bold;
+display: block;
+margin-top: 20px;
+margin-bottom: 6px;
+}
