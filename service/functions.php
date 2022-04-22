@@ -35,3 +35,7 @@ function send_json($array) {
     header('Content-type: application/json');
     echo json_encode( $array );
 }
+
+function rob($msg) {
+    echo "<div class=\"rob\">{$msg}</div>";
+}
