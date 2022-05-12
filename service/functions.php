@@ -19,6 +19,11 @@ function get_item() {
 }
 
 function show_item($item) {
+    echo '<div id="console">';
+    echo '<p onclick="add_item()">New item</p>';
+    echo '<p onclick="edit_item(' . $item["id"] . ')">Edit item</p>';
+    echo '<p onclick="delete_item(' . $item["id"] . ')">Delete item</p>';
+    echo '</div>';
     echo '<div class="itemDetail">';
     //echo '<div class="itemText">';
     echo '<div class="itemHead">';
@@ -39,3 +44,23 @@ function send_json($array) {
 function rob($msg) {
     echo "<div class=\"rob\">{$msg}</div>";
 }
+
+/*
+editor functions
+*/
+
+function post_blog($id, $header, $text) {
+    global $db;
+
+    if ($db->insert_item($header, $text)) {
+        header('Content-type: application/json');
+        echo json_encode( array("status" => "OK") );
+    } else {
+        header("HTTP/1.0 404 Not Found");
+        echo "Error";
+    }
+
+}
+
+
+

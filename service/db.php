@@ -24,4 +24,12 @@ class db
             return 0;
         }
     }
+
+    function insert_item($header, $text) {
+        $stmt = $this->conn->prepare("INSERT INTO blog (head, body) VALUES(?,?)");
+        $stmt->bind_param("ss", $h, $b);
+        $h = $header;
+        $b = $text;
+        return $stmt->execute();
+    }
 }

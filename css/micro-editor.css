@@ -22,3 +22,9 @@ display: block;
 margin-top: 20px;
 margin-bottom: 6px;
 }
+
+#errorArea {
+display: block;
+font-weight: bold;
+color: #b00;
+}
