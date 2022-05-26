@@ -16,6 +16,10 @@ class db
         return $retArray;
     }
 
+    function delete_item($id) {
+        $this->conn->query("DELETE FROM blog WHERE id = $id");
+    }
+
     function get_item($id) {
         $result = $this->conn->query("SELECT * FROM blog WHERE id = $id");
         if ($result->num_rows) {
@@ -27,6 +31,14 @@ class db
 
     function insert_item($header, $text) {
         $stmt = $this->conn->prepare("INSERT INTO blog (head, body) VALUES(?,?)");
+        $stmt->bind_param("ss", $h, $b);
+        $h = $header;
+        $b = $text;
+        return $stmt->execute();
+    }
+
+    function update_item($id, $header, $text) {
+        $stmt = $this->conn->prepare("UPDATE blog SET head = ?, body = ? WHERE id = $id");
         $stmt->bind_param("ss", $h, $b);
         $h = $header;
         $b = $text;

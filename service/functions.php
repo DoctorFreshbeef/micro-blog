@@ -18,6 +18,15 @@ function get_item() {
     }
 }
 
+function delete_item() {
+    global $db;
+
+    if (isset($_GET["id"])) {
+        $db->delete_item($_GET["id"]);
+    }
+    send_json(array("status" => "OK"));
+}
+
 function show_item($item) {
     echo '<div id="console">';
     echo '<p onclick="add_item()">New item</p>';
@@ -52,7 +61,12 @@ editor functions
 function post_blog($id, $header, $text) {
     global $db;
 
-    if ($db->insert_item($header, $text)) {
+    if ($id == 0) {
+        $success = $db->insert_item($header, $text);
+    } else {
+        $success = $db->update_item($id, $header, $text);
+    }
+    if ($success) {
         header('Content-type: application/json');
         echo json_encode( array("status" => "OK") );
     } else {

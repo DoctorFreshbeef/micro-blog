@@ -76,7 +76,18 @@ function edit_item(id) {
 
 function delete_item(id) {
     if (confirm("Delete item" + id + "?")) {
-        alert(id);
+        $.ajax({
+            url: "http://localhost/micro/service/delete_item.php",
+            data: {
+                id: id
+            },
+            type: "GET",
+            dataType: "json"
+        }).done(function(json) {
+            window.document.location.replace("http://localhost/micro/");
+        }).fail(function(xhr, status, errorThrown) {
+            console.log( "Error: " + errorThrown );
+        });
     }
 }
 
