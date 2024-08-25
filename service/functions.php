@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $db = new db();
 
 function get_blog($start, $offset) {
